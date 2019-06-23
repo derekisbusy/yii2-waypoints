@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist derekisbusy/yii2-waypoints "*"
+php composer require --prefer-dist derekisbusy/yii2-waypoints:dev-master
 ```
 
 or add
 
 ```
-"derekisbusy/yii2-waypoints": "*"
+"derekisbusy/yii2-waypoints": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
@@ -25,7 +25,37 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Once the extension is installed, simply use it by adding it to your view  :
 
 ```php
-<?= \derekisbusy\waypoints\AutoloadExample::widget(); ?>```
+use \derekisbusy\waypoints\WaypointsAsset;
+
+WaypointsAsset::register($this);
+```
+
+or by adding it to another assets dependencies list :
+
+```php
+  public $depends = [
+    'derekisbusy\waypoints\WaypointsAsset'
+  ];
+```
+
+Then use waypoints in your view :
+
+```html
+<script>
+  var waypoint = new Waypoint({
+  element: document.getElementById('waypoint'),
+  handler: function(direction) {
+    console.log('Scrolled to waypoint!')
+  }
+})
+</script>
+```
+
+Documentation
+-------------
+
+ * [Waypoints](http://imakewebthings.com/waypoints/guides/getting-started/)
+ * [Yii2 assets](https://www.yiiframework.com/doc/guide/2.0/en/structure-assets)
